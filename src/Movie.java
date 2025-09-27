@@ -18,7 +18,8 @@ public class Movie
 		return priceCode;
 	}
 
-    public String getTitle () {
+
+	public String getTitle () {
 		return title;
 	}
 
