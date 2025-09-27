@@ -22,6 +22,7 @@ public class Customer
 		double 				totalAmount 			= 0;
 		int					frequentRenterPoints 	= 0;
 		String result 		= "Rental Record for " + getName() + "\n";
+        int uno=1;
 
         for (Rental rental : this.rentals) {
             frequentRenterPoints++;
