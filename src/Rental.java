@@ -6,26 +6,26 @@ public class Rental
 		this.daysRented = daysRented;
 	}
 
-    static double getAmountFor(Rental rental) {
-        double thisAmount = 0;
+    double getRentalPrice () {
+        double price = 0;
 
         // determines the amount for each line
-        switch (rental.getMovie().getPriceCode()) {
+        switch (this.getMovie().getPriceCode()) {
             case Movie.REGULAR:
-                thisAmount += 2;
-                if (rental.getDaysRented() > 2)
-                    thisAmount += (rental.getDaysRented() - 2) * 1.5;
+                price += 2;
+                if (this.getDaysRented() > 2)
+                    price += (this.getDaysRented() - 2) * 1.5;
                 break;
             case Movie.NEW_RELEASE:
-                thisAmount += rental.getDaysRented() * 3;
+                price += this.getDaysRented() * 3;
                 break;
             case Movie.CHILDRENS:
-                thisAmount += 1.5;
-                if (rental.getDaysRented() > 3)
-                    thisAmount += (rental.getDaysRented() - 3) * 1.5;
+                price += 1.5;
+                if (this.getDaysRented() > 3)
+                    price += (this.getDaysRented() - 3) * 1.5;
                 break;
         }
-        return thisAmount;
+        return price;
     }
 
     public int getDaysRented () {
@@ -38,4 +38,5 @@ public class Rental
 
 	private final Movie movie;
 	private final int daysRented;
+
 }
