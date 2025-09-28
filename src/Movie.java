@@ -7,15 +7,31 @@ public class Movie
 	public static final int NEW_RELEASE = 1;
 
 	private final String title;
-	private final int priceCode;
+    private Price price;
 
 	public Movie (String title, int priceCode) {
 		this.title 		= title;
-		this.priceCode 	= priceCode;
-	}
+        setPriceCode(priceCode);
+    }
 
-	public int getPriceCode () {
-		return priceCode;
+    public void setPriceCode(int priceCode) {
+        switch (priceCode) {
+            case REGULAR:
+                price = new RegularPrice();
+                break;
+            case CHILDRENS:
+                price = new ChildrensPrice();
+                break;
+            case NEW_RELEASE:
+                price = new NewReleasePrice();
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + priceCode);
+        }
+    }
+
+    public int getPriceCode () {
+		return price.getPriceCode();
 	}
 
 
@@ -23,4 +39,9 @@ public class Movie
 		return title;
 	}
 
+    double getCharge(int daysRented) {
+        double price = 0;
+        price = this.price.getCharge(daysRented);
+        return price;
+    }
 }
